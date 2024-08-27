@@ -4,12 +4,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class EmployeeDatabase {
-    static List<Employee> employees = new ArrayList<>();
+    static volatile List<Employee> employees = new ArrayList<>();
 
-    void addEmployee(Employee employee) {
+    static void addEmployee(Employee employee) {
         employees.add(employee);
     }
 
