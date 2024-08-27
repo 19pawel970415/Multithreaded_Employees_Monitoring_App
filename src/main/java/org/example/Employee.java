@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 @Getter
 @AllArgsConstructor
 public class Employee {
-    private String name;
-    private String surname;
+    private Long id;
     private BigDecimal salary;
 }

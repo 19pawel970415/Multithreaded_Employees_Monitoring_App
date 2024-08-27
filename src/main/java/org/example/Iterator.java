@@ -10,8 +10,9 @@ public class Iterator implements Runnable {
     public void run() {
         while (true) {
             for (Employee employee : employees) {
-                System.out.println("From iterator: " + employee);
+                System.out.println("From iterator: Employee " + employee.getId());
                 if (Thread.currentThread().isInterrupted()) {
+                    System.err.println("Iterator interrupted!");
                     return;
                 }
             }
