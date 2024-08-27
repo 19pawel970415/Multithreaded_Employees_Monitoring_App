@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         setUpDb();
 
-        CountDownLatch latch = new CountDownLatch(1);
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(2, () -> System.out.println("Barrier reached!"));
 
         EmployeeDataProcessor processor = new EmployeeDataProcessor();
 
@@ -43,12 +43,12 @@ public class Main {
             System.err.println(e.getMessage());
         }
 
-        ReportUpdater reportUpdater = new ReportUpdater(sum, latch);
+        ReportUpdater reportUpdater = new ReportUpdater(sum, cyclicBarrier);
         scheduledExecutor.scheduleAtFixedRate(reportUpdater, 0,5000, TimeUnit.MILLISECONDS);
 
         try {
-            latch.await();
-        } catch (InterruptedException e) {
+            cyclicBarrier.await();
+        } catch (BrokenBarrierException | InterruptedException e) {
             System.err.println(e.getMessage());
         }
 
