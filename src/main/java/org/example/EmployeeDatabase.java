@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class EmployeeDatabase {
-    private static List<Employee> employees = new ArrayList<>();
+    static List<Employee> employees = new ArrayList<>();
 
     void addEmployee(Employee employee) {
         employees.add(employee);
